@@ -4,6 +4,7 @@ echo "" # похуй
 echo "This script is distributed under the terms of the GNU General Public License version 2 (see https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt)."
 echo "Этот скрипт распространяется на условиях GNU General Public License версии 2 (см. ссылку выше)."
 echo "© BasedUser, 2024"
+echo ""
 
 YELLOW=$(echo -ne "\e[93m")
 GREEN=$(echo -ne "\e[92m")
