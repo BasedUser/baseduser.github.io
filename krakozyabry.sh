@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -e "krakozyabry.sh\tv1.0"
+echo -e "krakozyabry.sh\tv1.1"
 echo "" # похуй
 echo "This script is distributed under the terms of the GNU General Public License version 2 (see https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt)."
 echo "Этот скрипт распространяется на условиях GNU General Public License версии 2 (см. ссылку выше)."
@@ -100,10 +100,8 @@ uninstall_layout() {
         echo -e "${RED}Файл раскладки $LAYOUT_FILE не найден.${CLEAR}"
     fi
 
-    echo -e "${RED}\$ sudo sed -i '/<layout>/,/<\/layout>/ { /<name>ru_MB<\/name>/,/<\/layout>/d }' \"$EVDEV_XML\"${CLEAR}"
-    sudo sed -i '/<layout>/,/<\/layout>/{
-         /<name>ru_MB<\/name>/,/<\/layout>/d
-    }' "$EVDEV_XML"
+    echo -e "${RED}\$ sudo sed -i '/<layout>/ { :a; N; /<\\/layout>/\x21ba; /<name>ru_MB<\\/name>/d }' \"$EVDEV_XML\"${CLEAR}"
+    sudo sed -i '/<layout>/ { :a; N; /<\/layout>/!ba; /<name>ru_MB<\/name>/d }' "$EVDEV_XML"
 
     echo -e "${RED}\$ sudo sed -i '/ru_MB\s\\+Russian (Mojibake)/d' \"$EVDEV_LST\"${CLEAR}"
     sudo sed -i '/ru_MB\s\\+Russian (Mojibake)/d' "$EVDEV_LST"
